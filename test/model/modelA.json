@@ -1,0 +1,22 @@
+{
+  "id": "multiA",
+  "function": "function() {return !loggedIn}",
+  "states": [
+    {
+      "id": "source",
+      "function": "function() {return !loggedIn}"
+    },
+    {
+      "id": "target",
+      "function": "function() {return loggedIn}"
+    }
+  ],
+  "actions": [
+    {
+      "id": "action",
+      "function": "function() {loggedIn = true}",
+      "source": "source",
+      "target": "target"
+    }
+  ]
+}

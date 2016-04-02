@@ -1,0 +1,22 @@
+{
+  "id": "multiC",
+  "function": "function() {return loggedIn}",
+  "states": [
+    {
+      "id": "source",
+      "function": "function() {return 'source' == senarioB}"
+    },
+    {
+      "id": "target",
+      "function": "function() {return 'target' == senarioB}"
+    }
+  ],
+  "actions": [
+    {
+      "id": "action",
+      "function": "function() {senarioB = 'target'}",
+      "source": "source",
+      "target": "target"
+    }
+  ]
+}

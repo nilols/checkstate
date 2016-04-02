@@ -6,10 +6,10 @@ export default class Coverage {
     for (let model of this._models) {
       for (let state of model.states) {
         if (0 == model.elements[state.id].count) {
-          return true;
+          return false;
         }
       }
     }
-    return false;
+    return true;
   }
 }

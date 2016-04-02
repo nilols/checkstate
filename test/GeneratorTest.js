@@ -14,13 +14,13 @@ describe('generator', () => {
         new State('target', function() {return 'target' == state}),
         new Action('action', function() {return state = 'target'}))
     let generator = new Random([model], Coverage)
-    assert.equal(generator.hasMoreActions, true, 'should have more actions')
+    assert.equal(generator.isFulfilled, false, 'should have more actions')
     model.elements['source'].count = 1;
     assert.equal(generator.nextAction, model.actions[0], 'should return action')
-    assert.equal(generator.hasMoreActions, true, 'should have more actions')
+    assert.equal(generator.isFulfilled, false, 'should have more actions')
     model.elements['action'].count = 1;
-    assert.equal(generator.hasMoreActions, true, 'should have more actions')
+    assert.equal(generator.isFulfilled, false, 'should have more actions')
     model.elements['target'].count = 1;
-    assert.equal(generator.hasMoreActions, false, 'should not have more actions')
+    assert.equal(generator.isFulfilled, true, 'should not have more actions')
   })
 })
