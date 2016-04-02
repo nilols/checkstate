@@ -3,8 +3,8 @@ export default class Random {
     this._models = models
     this._condition = new condition(models)
   }
-  get hasMoreActions() {
-    return this._condition.hasMoreActions
+  get isFulfilled() {
+    return this._condition.isFulfilled
   }
   get nextAction() {
     let actions = this.findPossibleActions()

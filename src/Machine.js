@@ -4,8 +4,8 @@ export default class Machine {
     this._generator = new generator(models, condition)
     this.visitStates()
   }
-  get hasMoreActions() {
-    return this._generator.hasMoreActions
+  get isFulfilled() {
+    return this._generator.isFulfilled
   }
   get executeNextAction() {
     // validate expected states
