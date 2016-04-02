@@ -3,6 +3,7 @@ import Model from '../lib/model/Model'
 import State from '../lib/model/State'
 import md5 from 'md5'
 import assert from 'assert'
+import fs from 'fs'
 
 describe('model', () => {
   describe('state', () => {
@@ -67,9 +68,9 @@ describe('model', () => {
       let model = new Model('m', function() {return true})
       model.addState(source)
       model.addState(target)
-      assert.equal(model.actions.length, 0, 'failed to validate id')
+      assert.equal(model.actions.length, 0, 'failed to validate model')
       model.addAction(source, target, new Action('a', function() {return true}))
-      assert.equal(model.actions.length, 1, 'failed to validate id')
+      assert.equal(model.actions.length, 1, 'failed to validate model')
     })
     it('add action to model, that already exists', () => {
       let model = new Model('m', function() {return true})
@@ -78,6 +79,12 @@ describe('model', () => {
       let action = new Action('a', function() {return true})
       model.addAction(source, target, action)
       assert.throws(function() {model.addAction(source, target, action)}, Error, 'action already exits')
+    })
+    it('parse object', () => {
+      let model = Model.parse(JSON.parse(fs.readFileSync('test/model/simple.json')))
+      assert.equal(model.states.length, 2, 'failed to validate states')
+      assert.equal(model.actions.length, 1, 'failed to validate actions')
+      assert.equal(Object.keys(model.elements).length, 3, 'failed to validate elements')
     })
   })
 })

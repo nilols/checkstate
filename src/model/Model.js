@@ -1,3 +1,4 @@
+import Action from './Action'
 import State from './State'
 
 export default class Model extends State {
@@ -26,7 +27,7 @@ export default class Model extends State {
   }
   addState(state) {
     if (state.id in this._elements) {
-      throw new Error('state already exits')
+      throw new Error('id already exits')
     }
     this._elements[state.id] = {count:0}
     this._states.push(state)
@@ -35,7 +36,7 @@ export default class Model extends State {
   }
   addAction(source, target, action) {
     if (action.id in this._elements) {
-      throw new Error('action already exits')
+      throw new Error('id already exits')
     }
     if (!(source.id in this._elements)) {
       this.addState(source)
@@ -43,10 +44,25 @@ export default class Model extends State {
     if (!(target.id in this._elements)) {
       this.addState(target)
     }
-    this._elements[action.id] = {}
+    this._elements[action.id] = {count:0}
     this._actions.push(action)
     this._sources[source.id].push(action)
     this._targets[action.id] = target
     return this;
+  }
+  static parse(json) {
+    let model = new Model(json.id, json.function)
+    let states = {}
+    for (let state of json.states) {
+      states[state.id] = new State(state.id, state.function)
+      model.addState(states[state.id])
+    }
+    for (let action of json.actions) {
+      model.addAction(
+        states[action.source],
+        states[action.target],
+        new Action(action.id, action.function))
+    }
+    return model
   }
 }

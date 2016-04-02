@@ -1,0 +1,22 @@
+{
+  "id": "simple",
+  "function": "function() {return true}",
+  "states": [
+    {
+      "id": "source",
+      "function": "function() {return 'source' == state}"
+    },
+    {
+      "id": "target",
+      "function": "function() {return 'target' == state}"
+    }
+  ],
+  "actions": [
+    {
+      "id": "action",
+      "function": "function() {return state = 'target'}",
+      "source": "source",
+      "target": "target"
+    }
+  ]
+}
