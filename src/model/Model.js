@@ -19,35 +19,41 @@ export default class Model extends State {
   get actions() {
     return this._actions
   }
+  get sources() {
+    return this._sources
+  }
+  get targets() {
+    return this._targets
+  }
   actionsByState(state) {
-    return this._sources[state.id]
+    return this.sources[state.id]
   }
   visit(element) {
-    this._elements[element.id].count++;
+    this.elements[element.id].count++;
   }
   addState(state) {
-    if (state.id in this._elements) {
+    if (state.id in this.elements) {
       throw new Error('id already exits')
     }
-    this._elements[state.id] = {count:0}
-    this._states.push(state)
-    this._sources[state.id] = []
+    this.elements[state.id] = {count:0}
+    this.states.push(state)
+    this.sources[state.id] = []
     return this;
   }
   addAction(source, target, action) {
-    if (action.id in this._elements) {
+    if (action.id in this.elements) {
       throw new Error('id already exits')
     }
-    if (!(source.id in this._elements)) {
+    if (!(source.id in this.elements)) {
       this.addState(source)
     }
-    if (!(target.id in this._elements)) {
+    if (!(target.id in this.elements)) {
       this.addState(target)
     }
-    this._elements[action.id] = {count:0}
-    this._actions.push(action)
-    this._sources[source.id].push(action)
-    this._targets[action.id] = target
+    this.elements[action.id] = {count:0}
+    this.actions.push(action)
+    this.sources[source.id].push(action)
+    this.targets[action.id] = target
     return this;
   }
   static parse(json) {
