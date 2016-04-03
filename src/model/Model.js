@@ -56,7 +56,8 @@ export default class Model extends State {
     this.targets[action.id] = target
     return this;
   }
-  static parse(json) {
+  static parse(file) {
+    let json = JSON.parse(file)
     let model = new Model(json.id, eval('(' + json.function + ')'))
     let states = {}
     for (let state of json.states) {
