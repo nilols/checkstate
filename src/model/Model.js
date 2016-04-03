@@ -57,17 +57,17 @@ export default class Model extends State {
     return this;
   }
   static parse(json) {
-    let model = new Model(json.id, json.function)
+    let model = new Model(json.id, eval('(' + json.function + ')'))
     let states = {}
     for (let state of json.states) {
-      states[state.id] = new State(state.id, state.function)
+      states[state.id] = new State(state.id, eval('(' + state.function + ')'))
       model.addState(states[state.id])
     }
     for (let action of json.actions) {
       model.addAction(
         states[action.source],
         states[action.target],
-        new Action(action.id, action.function))
+        new Action(action.id, eval('(' + action.function + ')')))
     }
     return model
   }
