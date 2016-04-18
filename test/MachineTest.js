@@ -1,10 +1,4 @@
-import ModelFactory from '../lib/model/ModelFactory';
-import Machine from '../lib/Machine';
-import Model from '../lib/model/Model';
-import State from '../lib/model/State';
-import Action from '../lib/model/Action';
-import Random from '../lib/generator/Random';
-import Coverage from '../lib/condition/Coverage';
+import {Action, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
 import assert from 'assert';
 import fs from 'fs';
 

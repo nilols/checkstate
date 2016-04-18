@@ -1,7 +1,4 @@
-import Model from '../lib/model/Model';
-import State from '../lib/model/State';
-import Action from '../lib/model/Action';
-import Coverage from '../lib/condition/Coverage';
+import {Action, Model, State, Coverage} from '../lib/index';
 import assert from 'assert';
 
 describe('condition', () => {

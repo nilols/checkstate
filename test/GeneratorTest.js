@@ -1,8 +1,4 @@
-import Model from '../lib/model/Model';
-import State from '../lib/model/State';
-import Action from '../lib/model/Action';
-import Coverage from '../lib/condition/Coverage';
-import Random from '../lib/generator/Random';
+import {Action, Model, State, Coverage, Random} from '../lib/index';
 import assert from 'assert';
 
 describe('generator', () => {

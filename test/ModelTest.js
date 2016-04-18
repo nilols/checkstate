@@ -1,7 +1,4 @@
-import ModelFactory from '../lib/model/ModelFactory';
-import Action from '../lib/model/Action';
-import Model from '../lib/model/Model';
-import State from '../lib/model/State';
+import {Action, Model, ModelFactory, State} from '../lib/index';
 import md5 from 'md5';
 import assert from 'assert';
 import fs from 'fs';
