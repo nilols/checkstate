@@ -1,6 +1,6 @@
 {
   "id": "simple",
-  "function": "function() {return true}",
+  "function": "function() {return true;}",
   "states": [
     {
       "id": "source",

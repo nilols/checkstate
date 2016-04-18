@@ -1,0 +1,31 @@
+{
+  "id": "example",
+  "function": "function() {return true}",
+  "states": [
+    {
+      "id": "A",
+      "function": "function() {return 'A' == state}"
+    }, {
+      "id": "B",
+      "function": "function() {return 'B' == state}"
+    }, {
+      "id": "C",
+      "function": "function() {return 'C' == state}"
+    }
+  ],
+  "actions": [
+    {
+      "id": "b",
+      "function": "function() {states.push('B')}",
+      "events": ["E"],
+      "source": "A",
+      "target": "B"
+    }, {
+      "id": "c",
+      "function": "function() {}",
+      "events": ["E"],
+      "source": "A",
+      "target": "C"
+    }
+  ]
+}

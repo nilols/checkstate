@@ -1,10 +1,14 @@
-import Element from './Element'
+import Element from './Element';
 
 export default class Action extends Element {
-  constructor(id, fn) {
-    super(id, fn)
+  constructor(id, fn, events) {
+    super(id, fn);
+    this._events = events;
+  }
+  get events() {
+    return this._events;
   }
   execute() {
-    this.fn()
+    this.fn();
   }
 }
