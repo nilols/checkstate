@@ -1,3 +1,4 @@
+import ModelFactory from '../lib/model/ModelFactory';
 import Machine from '../lib/Machine';
 import Model from '../lib/model/Model';
 import State from '../lib/model/State';
@@ -22,9 +23,9 @@ describe('machine', () => {
     assert.equal(model.elements.target.count, 1, 'entire model haven\'t been traversed');
   });
   it('execute multiple models', () => {
-    let modelA = Model.parse(fs.readFileSync('test/model/modelA.json'));
-    let modelB = Model.parse(fs.readFileSync('test/model/modelB.json'));
-    let modelC = Model.parse(fs.readFileSync('test/model/modelC.json'));
+    let modelA = ModelFactory.create(fs.readFileSync('test/model/modelA.json'));
+    let modelB = ModelFactory.create(fs.readFileSync('test/model/modelB.json'));
+    let modelC = ModelFactory.create(fs.readFileSync('test/model/modelC.json'));
     //let machine = new Machine([modelA, modelB, modelC], Random, Coverage)
     //while (!machine.isFulfilled) {
     //  machine.executeNextAction

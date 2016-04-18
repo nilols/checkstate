@@ -1,4 +1,5 @@
 import Machine from '../lib/Machine';
+import ModelFactory from '../lib/model/ModelFactory';
 import Model from '../lib/model/Model';
 import State from '../lib/model/State';
 import Action from '../lib/model/Action';
@@ -10,7 +11,7 @@ import fs from 'fs';
 describe('example', () => {
   it('example', () => {
     let state = 'source';
-    let model = Model.parse(fs.readFileSync('test/model/example.json'));
+    let model = ModelFactory.create(fs.readFileSync('test/model/example.json'));
     let machine = new Machine([model], Random, Coverage);
     //while (!machine.isFulfilled) {
     //  machine.executeNextAction();

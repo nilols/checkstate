@@ -1,3 +1,4 @@
+import ModelFactory from '../lib/model/ModelFactory';
 import Action from '../lib/model/Action';
 import Model from '../lib/model/Model';
 import State from '../lib/model/State';
@@ -81,7 +82,7 @@ describe('model', () => {
       assert.throws(function() {model.addAction(source, target, action);}, Error, 'action already exits');
     });
     it('parse object', () => {
-      let model = Model.parse(fs.readFileSync('test/model/simple.json'));
+      let model = ModelFactory.create(fs.readFileSync('test/model/simple.json'));
       assert.equal(model.states.length, 2, 'failed to validate states');
       assert.equal(model.actions.length, 1, 'failed to validate actions');
       assert.equal(Object.keys(model.elements).length, 3, 'failed to validate elements');
