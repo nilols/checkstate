@@ -1,4 +1,4 @@
-import {Action, Model, ModelFactory, State} from '../lib/index';
+import {Transition, Model, ModelFactory, State} from '../lib/index';
 import md5 from 'md5';
 import assert from 'assert';
 import fs from 'fs';
@@ -24,15 +24,15 @@ describe('model', () => {
 
   describe('action', () => {
     it('create single instance', () => {
-      let action = new Action('a', function() {return true;});
+      let action = new Transition('a', function() {return true;});
       assert.equal(action.id, 'a', 'failed to validate id');
       assert.equal(action.hash, md5(function() {return true;}), 'failed to validate id');
     });
     it('cast exception if id is not defined', () => {
-      assert.throws(function() {new Action();}, Error, 'Missing parameter');
+      assert.throws(function() {new Transition();}, Error, 'Missing parameter');
     });
     it('cast exception if state function is not defined', () => {
-      assert.throws(function() {new Action('s');}, Error, 'Missing parameter');
+      assert.throws(function() {new Transition('s');}, Error, 'Missing parameter');
     });
   });
 
@@ -67,14 +67,14 @@ describe('model', () => {
       model.addState(source);
       model.addState(target);
       assert.equal(model.actions.length, 0, 'failed to validate model');
-      model.addAction(source, target, new Action('a', function() {return true;}));
+      model.addAction(source, target, new Transition('a', function() {return true;}));
       assert.equal(model.actions.length, 1, 'failed to validate model');
     });
     it('add action to model, that already exists', () => {
       let model = new Model('m', function() {return true;});
       let source = new State('s', function() {return true;});
       let target = new State('t', function() {return true;});
-      let action = new Action('a', function() {return true;});
+      let action = new Transition('a', function() {return true;});
       model.addAction(source, target, action);
       assert.throws(function() {model.addAction(source, target, action);}, Error, 'action already exits');
     });

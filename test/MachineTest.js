@@ -1,4 +1,4 @@
-import {Action, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
+import {Transition, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
 import assert from 'assert';
 import fs from 'fs';
 
@@ -9,7 +9,7 @@ describe('machine', () => {
       .addAction(
         new State('source', function() {return 'source' == state;}),
         new State('target', function() {return 'target' == state;}),
-        new Action('action', function() {state = 'target';}));
+        new Transition('action', function() {state = 'target';}));
     let machine = new Machine([model], Random, Coverage);
     while (!machine.isFulfilled) {
       machine.executeNextAction();

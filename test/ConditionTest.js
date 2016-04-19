@@ -1,4 +1,4 @@
-import {Action, Model, State, Coverage} from '../lib/index';
+import {Transition, Model, State, Coverage} from '../lib/index';
 import assert from 'assert';
 
 describe('condition', () => {
@@ -8,7 +8,7 @@ describe('condition', () => {
       .addAction(
         new State('source', function() {return 'source' == state;}),
         new State('target', function() {return 'target' == state;}),
-        new Action('action', function() {state = 'target';}));
+        new Transition('action', function() {state = 'target';}));
     let coverage = new Coverage([model]);
     assert.equal(coverage.isFulfilled, false, 'should have more actions');
     model.elements.source.count = 1;

@@ -1,4 +1,4 @@
-import {Action, Model, State, Coverage, Random} from '../lib/index';
+import {Transition, Model, State, Coverage, Random} from '../lib/index';
 import assert from 'assert';
 
 describe('generator', () => {
@@ -8,7 +8,7 @@ describe('generator', () => {
       .addAction(
         new State('source', function() {return 'source' == state;}),
         new State('target', function() {return 'target' == state;}),
-        new Action('action', function() {state = 'target';}));
+        new Transition('action', function() {state = 'target';}));
     let generator = new Random([model], Coverage);
     assert.equal(generator.isFulfilled, false, 'should have more actions');
     model.elements.source.count = 1;
