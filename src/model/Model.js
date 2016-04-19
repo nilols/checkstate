@@ -2,8 +2,8 @@ import Transition from './Transition';
 import State from './State';
 
 export default class Model extends State {
-  constructor(id, fn) {
-    super(id, fn);
+  constructor(id, name, fn) {
+    super(id, name, fn);
     this._elements = {};
     this._states = [];
     this._actions = [];

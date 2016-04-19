@@ -5,11 +5,11 @@ import fs from 'fs';
 describe('machine', () => {
   it('execute a simple model', () => {
     let state = 'source';
-    let model = new Model('model', function() {return true;})
+    let model = new Model('model', '', function() {return true;})
       .addAction(
-        new State('source', function() {return 'source' == state;}),
-        new State('target', function() {return 'target' == state;}),
-        new Transition('action', function() {state = 'target';}));
+        new State('source', '', function() {return 'source' == state;}),
+        new State('target', '', function() {return 'target' == state;}),
+        new Transition('action', '', function() {state = 'target';}));
     let machine = new Machine([model], Random, Coverage);
     while (!machine.isFulfilled) {
       machine.executeNextAction();

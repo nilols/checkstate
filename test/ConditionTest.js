@@ -4,11 +4,11 @@ import assert from 'assert';
 describe('condition', () => {
   it('coverage', () => {
     let state = 'source';
-    let model = new Model('model', function() {return true;})
+    let model = new Model('model', '', function() {return true;})
       .addAction(
-        new State('source', function() {return 'source' == state;}),
-        new State('target', function() {return 'target' == state;}),
-        new Transition('action', function() {state = 'target';}));
+        new State('source', '', function() {return 'source' == state;}),
+        new State('target', '', function() {return 'target' == state;}),
+        new Transition('action', '', function() {state = 'target';}));
     let coverage = new Coverage([model]);
     assert.equal(coverage.isFulfilled, false, 'should have more actions');
     model.elements.source.count = 1;

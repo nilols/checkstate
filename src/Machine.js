@@ -15,7 +15,7 @@ export default class Machine {
   }
   executeNextAction() {
     // validate expected states
-    this.generator.nextAction.execute();
+    this.generator.nextAction.action();
     this.visitStates();
   }
   visitStates() {

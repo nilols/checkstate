@@ -1,10 +1,11 @@
 import Element from './Element';
 
 export default class State extends Element {
-  constructor(id, fn) {
-    super(id, fn);
+  constructor(id, name, fn) {
+    super(id, name);
+    this._fn = fn;
   }
   get isActive() {
-    return this.fn();
+    return this._fn();
   }
 }
