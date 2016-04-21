@@ -1,4 +1,4 @@
-import {Transition, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
+import {Action, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
 import assert from 'assert';
 import fs from 'fs';
 

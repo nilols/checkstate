@@ -1,4 +1,4 @@
-import Transition from './Transition';
+import Action from './Action';
 import State from './State';
 import Model from './Model';
 
@@ -16,7 +16,7 @@ export default class ModelFactory {
       model.addAction(
         states[action.source],
         states[action.target],
-        new Transition(action.id, '', eval('(' + action.function + ')'), action.events));
+        new Action(action.id, '', eval('(' + action.function + ')'), action.events));
     }
     /*jshint +W061 */
     return model;

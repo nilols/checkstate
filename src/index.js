@@ -1,5 +1,5 @@
 // Model
-import Transition from './model/Transition';
+import Action from './model/Action';
 import Model from './model/Model';
 import ModelFactory from './model/ModelFactory';
 import State from './model/State';
@@ -12,7 +12,7 @@ import Coverage from './condition/Coverage';
 
 export {
   // Model
-  Transition,
+  Action,
   Model,
   ModelFactory,
   State,

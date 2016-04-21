@@ -1,4 +1,4 @@
-import Transition from './Transition';
+import Action from './Action';
 import State from './State';
 
 export default class Model extends State {
