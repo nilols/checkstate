@@ -25,36 +25,38 @@ describe('model', () => {
 
   describe('model', () => {
     it('create single instance', () => {
-      let model = new Model('m', '', function() {return true;});
-      assert.equal(model.id, 'm', 'failed to validate id');
+      let model = new Model('id', 'name', function() {return true;});
+      assert.equal(model.id, 'id', 'failed to validate id');
+      assert.equal(model.name, 'name', 'failed to validate name');
+      assert.equal(model.isActive, true, 'failed to validate function');
     });
     it('add state to model', () => {
-      let model = new Model('m', '', function() {return true;});
+      let model = new Model('id', 'name', function() {return true;});
       assert.equal(model.states.length, 0, 'failed to validate id');
-      model.addState(new State('s', function() {return true;}));
+      model.addState(new State('id', 'name', function() {return true;}));
       assert.equal(model.states.length, 1, 'failed to validate id');
     });
     it('add state to model, that already exists', () => {
-      let model = new Model('m', '', function() {return true;});
-      let state = new State('s', '', function() {return true;});
+      let model = new Model('id', 'name', function() {return true;});
+      let state = new State('id', 'name', function() {return true;});
       model.addState(state);
       assert.throws(function() {model.addState(state);}, Error, 'state already exits');
     });
     it('add action to model', () => {
-      let source = new State('s1', '', function() {return true;});
-      let target = new State('s2', '', function() {return true;});
-      let model = new Model('m', '', function() {return true;});
+      let source = new State('source', 'name', function() {return true;});
+      let target = new State('target', 'name', function() {return true;});
+      let model = new Model('model', 'name', function() {return true;});
       model.addState(source);
       model.addState(target);
       assert.equal(model.actions.length, 0, 'failed to validate model');
-      model.addAction(source, target, new Action('a', function() {return true;}));
+      model.addAction(source, target, new Action('action', 'name', function() {return true;}));
       assert.equal(model.actions.length, 1, 'failed to validate model');
     });
     it('add action to model, that already exists', () => {
-      let model = new Model('m', function() {return true;});
-      let source = new State('s', function() {return true;});
-      let target = new State('t', function() {return true;});
-      let action = new Action('a', function() {return true;});
+      let model = new Model('model', 'name', function() {return true;});
+      let source = new State('source', 'name', function() {return true;});
+      let target = new State('target', 'name', function() {return true;});
+      let action = new Action('action', 'name', function() {return true;});
       model.addAction(source, target, action);
       assert.throws(function() {model.addAction(source, target, action);}, Error, 'action already exits');
     });
