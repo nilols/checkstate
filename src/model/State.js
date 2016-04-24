@@ -4,7 +4,7 @@ export default class State extends Element {
   constructor(id, name, fn) {
     super(id, name, fn);
   }
-  get isActive() {
+  isActive() {
     return this.fn();
   }
 }

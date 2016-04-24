@@ -9,7 +9,7 @@ describe('model', () => {
       let state = new State('id', 'name', function() {return true;});
       assert.equal(state.id, 'id', 'failed to validate id');
       assert.equal(state.name, 'name', 'failed to validate name');
-      assert.equal(state.isActive, true, 'failed to validate function');
+      assert.equal(state.isActive(), true, 'failed to validate function');
     });
   });
 
@@ -28,7 +28,7 @@ describe('model', () => {
       let model = new Model('id', 'name', function() {return true;});
       assert.equal(model.id, 'id', 'failed to validate id');
       assert.equal(model.name, 'name', 'failed to validate name');
-      assert.equal(model.isActive, true, 'failed to validate function');
+      assert.equal(model.isActive(), true, 'failed to validate function');
     });
     it('add state to model', () => {
       let model = new Model('id', 'name', function() {return true;});

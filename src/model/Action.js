@@ -5,10 +5,10 @@ export default class Action extends Element {
     super(id, name, fn);
     this._events = events;
   }
-  get execute() {
-    return this.fn;
-  }
   get events() {
     return this._events;
+  }
+  execute() {
+    return this.fn();
   }
 }
