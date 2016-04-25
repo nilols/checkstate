@@ -1,6 +1,6 @@
 import Element from './Element';
 
-export default class Action extends Element {
+export default class Edge extends Element {
   constructor(id, name, fn, events = []) {
     super(id, name, fn);
     this._events = events;

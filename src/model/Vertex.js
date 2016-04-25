@@ -1,6 +1,6 @@
 import Element from './Element';
 
-export default class State extends Element {
+export default class Vertex extends Element {
   constructor(id, name, fn) {
     super(id, name, fn);
   }

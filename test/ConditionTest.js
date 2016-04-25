@@ -1,4 +1,4 @@
-import {Action, Model, State, Coverage} from '../lib/index';
+import {Edge, Model, Vertex, Coverage} from '../lib/index';
 import assert from 'assert';
 
 describe('condition', () => {
@@ -7,9 +7,9 @@ describe('condition', () => {
     let state = 'source';
     let model = new Model('model', '', function() {return true;})
       .addAction(
-        new State('source', '', function() {return 'source' == state;}),
-        new State('target', '', function() {return 'target' == state;}),
-        new Action('action', '', function() {state = 'target';}));
+        new Vertex('source', '', function() {return 'source' == state;}),
+        new Vertex('target', '', function() {return 'target' == state;}),
+        new Edge('action', '', function() {state = 'target';}));
     let coverage = new Coverage([model]);
     assert.equal(coverage.isFulfilled, false, 'should have more actions');
     model.elements.source.count = 1;

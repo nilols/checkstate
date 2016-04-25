@@ -1,4 +1,4 @@
-import {Action, Model, ModelFactory, State} from '../../lib/index';
+import {Edge, Model, ModelFactory, Vertex} from '../../lib/index';
 import DepthFirstSearch from '../../lib/algorithm/DepthFirstSearch';
 import assert from 'assert';
 
@@ -6,9 +6,9 @@ describe('DepthFirstSearch', () => {
   it('simple', () => {
     let model = new Model('model', '', function() {return true;})
       .addAction(
-        new State('source', '', function() {return 'source' == state;}),
-        new State('target', '', function() {return 'target' == state;}),
-        new Action('action', '', function() {state = 'target';}));
+        new Vertex('source', '', function() {return 'source' == state;}),
+        new Vertex('target', '', function() {return 'target' == state;}),
+        new Edge('action', '', function() {state = 'target';}));
     let depthFirstSearch = new DepthFirstSearch(model, model.getStateById('source'));
   });
 });

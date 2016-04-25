@@ -1,7 +1,7 @@
-import Action from './Action';
-import State from './State';
+import Edge from './Edge';
+import Vertex from './Vertex';
 
-export default class Model extends State {
+export default class Model extends Vertex {
   constructor(id, name, fn) {
     super(id, name, fn);
     this._elements = {};

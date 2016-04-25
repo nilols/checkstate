@@ -1,4 +1,4 @@
-import {Action, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
+import {Edge, Model, ModelFactory, Vertex, Machine, Random, Coverage} from '../lib/index';
 import assert from 'assert';
 import fs from 'fs';
 

@@ -1,4 +1,4 @@
-import {Action, Model, ModelFactory, State, Machine, Random, Coverage} from '../lib/index';
+import {Edge, Model, ModelFactory, Vertex, Machine, Random, Coverage} from '../lib/index';
 import assert from 'assert';
 import fs from 'fs';
 
@@ -8,9 +8,9 @@ describe('machine', () => {
     let state = 'source';
     let model = new Model('model', '', function() {return true;})
       .addAction(
-        new State('source', '', function() {return 'source' == state;}),
-        new State('target', '', function() {return 'target' == state;}),
-        new Action('action', '', function() {state = 'target';}));
+        new Vertex('source', '', function() {return 'source' == state;}),
+        new Vertex('target', '', function() {return 'target' == state;}),
+        new Edge('action', '', function() {state = 'target';}));
     let machine = new Machine([model], Random, Coverage);
     while (!machine.isFulfilled) {
       machine.executeNextAction();

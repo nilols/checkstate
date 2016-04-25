@@ -1,8 +1,8 @@
 // Model
-import Action from './model/Action';
+import Edge from './model/Edge';
 import Model from './model/Model';
 import ModelFactory from './model/ModelFactory';
-import State from './model/State';
+import Vertex from './model/Vertex';
 // Machine
 import Machine from './Machine';
 // Path generators
@@ -12,10 +12,10 @@ import Coverage from './condition/Coverage';
 
 export {
   // Model
-  Action,
+  Edge,
   Model,
   ModelFactory,
-  State,
+  Vertex,
   // Machine
   Machine,
   // Path generators
