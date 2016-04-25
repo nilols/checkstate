@@ -1,9 +1,9 @@
 import Edge from './Edge';
-import Vertex from './Vertex';
+import Element from './Element';
 
-export default class Model extends Vertex {
-  constructor(id, name, fn) {
-    super(id, name, fn);
+export default class Model extends Element {
+  constructor(id, name) {
+    super(id, name);
     this._elements = {};
     this._adjacent = {};
     this._states = [];

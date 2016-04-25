@@ -1,10 +1,11 @@
 import Element from './Element';
 
 export default class Vertex extends Element {
-  constructor(id, name, fn) {
-    super(id, name, fn);
+  constructor(id, name, state) {
+    super(id, name);
+    this._state = state;
   }
   isActive() {
-    return this.fn();
+    return this._state();
   }
 }

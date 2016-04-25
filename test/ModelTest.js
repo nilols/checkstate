@@ -28,7 +28,6 @@ describe('model', () => {
       let model = new Model('id', 'name', function() {return true;});
       assert.equal(model.id, 'id', 'failed to validate id');
       assert.equal(model.name, 'name', 'failed to validate name');
-      assert.equal(model.isActive(), true, 'failed to validate function');
     });
     it('add state to model', () => {
       let model = new Model('id', 'name', function() {return true;});
