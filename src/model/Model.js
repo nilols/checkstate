@@ -5,6 +5,7 @@ export default class Model extends State {
   constructor(id, name, fn) {
     super(id, name, fn);
     this._elements = {};
+    this._adjacent = {};
     this._states = [];
     this._actions = [];
     this._sources = {};
@@ -25,17 +26,23 @@ export default class Model extends State {
   get targets() {
     return this._targets;
   }
+  getAdjacentStates(state) {
+    return this._adjacent[state.id];
+  }
+  getStateById(id) {
+    return this.elements[id];
+  }
   actionsByState(state) {
     return this.sources[state.id];
   }
   visit(element) {
-    this.elements[element.id].count++;
+    //this.elements[element.id].count++;
   }
   addState(state) {
     if (state.id in this.elements) {
       throw new Error('id already exits');
     }
-    this.elements[state.id] = {count:0};
+    this.elements[state.id] = state;
     this.states.push(state);
     this.sources[state.id] = [];
     return this;
@@ -50,7 +57,7 @@ export default class Model extends State {
     if (!(target.id in this.elements)) {
       this.addState(target);
     }
-    this.elements[action.id] = {count:0};
+    this.elements[action.id] = action;
     this.actions.push(action);
     this.sources[source.id].push(action);
     this.targets[action.id] = target;
